@@ -3,23 +3,21 @@ import { useState, useEffect } from "react";
 
 const WeatherData = async (city) => {
   const apiKey = import.meta.env.VITE_KEY;
-  console.log(apiKey);
+  // console.log(apiKey);
 
   // const url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&appid=${apiKey}`;
   const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
 
-  const dataji = await fetch(url)
+  const dataWeather = await fetch(url)
     .then((response) => response.json())
     .then((data) => {
-      // console.log(data);
-      //  setWeatherData(data);
-      // console.log(typeof (WeatherData));
+     
 
       return data;
     })
     .catch((error) => console.error("Error fetching weather data:", error));
 
-  return dataji;
+  return dataWeather;
 };
 
 const Data = ({ city }) => {
@@ -46,11 +44,16 @@ const Data = ({ city }) => {
   const weatherdes = weather[0].description;
   return (
     <>
-      {/* <h1 className="text-white">Weather</h1> */}
-      <h1> {temp} </h1>
-      <h1> {humidity} </h1>
+
+      <div className=" bg-white   text-black w-full h-20  rounded-md">
+        Hello
+      </div>
+
+
+      <h1> {WData.main.temp} </h1>
+      <h1> {WData.main.humidity} </h1>
       <h1> {weatherdes} </h1>
-      <h1>{name} </h1>
+      <h1>{WData.name} </h1>
     </>
   );
 };
