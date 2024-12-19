@@ -44,16 +44,11 @@ const Data = ({ city }) => {
   const weatherdes = weather[0].description;
   return (
     <>
+      <div className="">
+        <div className="font-semibold text-xl">{WData.name}, <span>{WData.sys.country}</span></div>
 
-      <div className=" bg-white   text-black w-full h-20  rounded-md">
-        Hello
+        <div className="font-semibold text-xl">{WData.main.temp}</div>
       </div>
-
-
-      <h1> {WData.main.temp} </h1>
-      <h1> {WData.main.humidity} </h1>
-      <h1> {weatherdes} </h1>
-      <h1>{WData.name} </h1>
     </>
   );
 };
