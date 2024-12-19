@@ -1,10 +1,17 @@
 import { useState } from "react";
 import Data from "./Data";
+import  {MoreDesc}  from "./MoreDesc";
+import {  Navigate, Route, Routes,useNavigate } from "react-router-dom";
 
 function App() {
   const [cityData, setCityData] = useState([]);
   const [cityName, setCityName] = useState("");
 
+  const navigate = useNavigate();
+  const gotodesc = () => {
+    navigate("/cityName");
+  }
+ 
   
   const addCity = (e) => {
 
@@ -37,12 +44,19 @@ function App() {
             setCityName(e.target.value);
           }}
         />
+        <div className="flex flex-row space-x-2">
         <button
           onClick={addCity}
           className="bg-blue-700 text-white p-2 rounded-md font-semibold"
         >
           Add City
         </button>
+        <button onClick={gotodesc}
+        className="bg-blue-700 text-white p-2 rounded-md font-semibold">
+          More details
+        </button>
+       
+        </div>
       </form>
       <ul className="w-full flex justify-start items-center flex-col gap-2">
         {cityData.map((city) => {
@@ -62,6 +76,10 @@ function App() {
           );
         })}
       </ul>
+
+      <Routes>
+        <Route path="/cityName" element={<MoreDesc/>}></Route>
+      </Routes>
     </div>
   );
 }
